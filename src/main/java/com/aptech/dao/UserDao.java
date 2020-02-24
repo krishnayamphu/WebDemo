@@ -49,6 +49,60 @@ public class UserDao {
         return allUsers;
     }
 
+    //get single user
+    public static List<User> getUser(int id) {
+        Connection con = connect();
+        List<User> singleUser = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE id=?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                User user = new User();
+                user.setId(Integer.parseInt(rs.getString("id")));
+                user.setUsername(rs.getString("username"));
+                user.setPassword(rs.getString("password"));
+                user.setCreatedAt(rs.getString("created_at"));
+                user.setUpdatedAt(rs.getString("updated_at"));
+
+                singleUser.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return singleUser;
+    }
+
+    //update user
+    public static void updateUser(User user) {
+        Connection con = connect();
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE users SET username=?,password=? WHERE id=?");
+            ps.setString(1, user.getUsername());
+            ps.setString(2, user.getPassword());
+            ps.setInt(3, user.getId());
+            ps.executeUpdate();
+
+            System.out.println("Data Updated");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //delete user
+    public static void deleteUser(User user) {
+        Connection con = connect();
+        try {
+            PreparedStatement ps = con.prepareStatement("DELETE FROM users WHERE id=?");
+            ps.setInt(1, user.getId());
+            ps.executeUpdate();
+
+            System.out.println("Data Deleted");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     /*Authenticating user login*/
     public int login(String username, String password) {
         int count = 0;

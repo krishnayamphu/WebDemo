@@ -8,10 +8,11 @@
 
 <h2>Manage Users</h2>
 <a href="user/create">Create User</a>
+<hr>
 <table border="1px">
     <tr>
         <th>#ID</th>
-        <th>Username</th>
+        <th style="width: 300px">Username</th>
         <th>Crated Date</th>
         <th>Action</th>
     </tr>
@@ -20,7 +21,20 @@
             <td>${user.id}</td>
             <td>${user.username}</td>
             <td>${user.createdAt}</td>
-            <td><a href="#">Edit</a></td>
+            <td>
+                <div style="display: flex;
+            padding: 5px;
+            width: 115px;
+            ">
+                    <a style="margin-right: 10px" href="http://localhost:8080/webdemo/user/edit?id=${user.id}">
+                        <button>Edit</button>
+                    </a>
+                    <form action="user/delete" method="post">
+                        <input type="hidden" name="id" value="${user.id}">
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+            </td>
         </tr>
     </c:forEach>
 </table>

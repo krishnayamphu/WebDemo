@@ -10,22 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(value = "/user/create")
-public class UserCreateController extends HttpServlet {
+@WebServlet(value = "/user/delete")
+public class UserDeleteController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
+        int id = Integer.parseInt(request.getParameter("id"));
         User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
+        user.setId(id);
 
-        UserDao.saveUser(user);
+        UserDao.deleteUser(user);
         response.sendRedirect("http://localhost:8080/webdemo/users");
-
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("create.jsp").forward(request, response);
     }
 }
