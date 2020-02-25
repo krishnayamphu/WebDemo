@@ -1,0 +1,25 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>File Upload</title>
+</head>
+<body>
+
+<form method="POST" enctype="multipart/form-data" action="upload">
+    File to upload: <input type="file" name="upfile"><br/>
+    <br/>
+    <input type="submit" value="Upload">
+</form>
+
+<hr>
+
+<h2>Manage Media Files</h2>
+<c:forEach items="${allFileList}" var="file">
+    <a href="http://localhost:8080/webdemo/preview?name=${file}">
+        <img style="width: 100px; margin:5px;" src="http://localhost:8080/webdemo/uploads/${file}" alt="">
+    </a>
+</c:forEach>
+
+</body>
+</html>
