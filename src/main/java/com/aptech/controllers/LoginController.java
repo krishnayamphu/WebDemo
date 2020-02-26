@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "LoginController", value = "/login")
+@WebServlet("/login")
 public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter pw = response.getWriter();
