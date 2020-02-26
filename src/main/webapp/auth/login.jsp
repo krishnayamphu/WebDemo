@@ -6,14 +6,11 @@
 <body>
 
 <h2>User Login</h2>
-<%
-    String msg = (String) request.getAttribute("errMsg");
 
-    if (msg != null) {
-        out.print(msg);
-    }
-%>
 <form action="login" method="post">
+    <c:if test="${errMsg!=null}">
+        <p style="color:red">${errMsg}</p>
+    </c:if>
     <lable>Username</lable>
     <input type="text" name="username" placeholder="Username">
     <br><br>

@@ -11,7 +11,9 @@
 <form action="logout" method="post">
     <button type="submit">Logout</button>
 </form>
-
+<hr>
+<a href="http://localhost:8080/webdemo/users">Users</a> |
+<a href="http://localhost:8080/webdemo/upload">Upload</a>
 <hr>
 
 <h1>Welcome to Dashboard !</h1>

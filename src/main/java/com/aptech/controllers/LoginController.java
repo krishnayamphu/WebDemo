@@ -26,11 +26,12 @@ public class LoginController extends HttpServlet {
         if (status == 1) {
             HttpSession session = request.getSession();
             session.setAttribute("user", "Admin");
-            response.sendRedirect("http://localhost:8080/webapp/dashboard");
+            response.sendRedirect("http://localhost:8080/webdemo/dashboard");
         } else {
             String msg = "Invalid username or password.";
-            request.setAttribute("err", msg);
-            response.sendRedirect("http://localhost:8080/webapp/login?err");
+            request.setAttribute("errMsg", msg);
+            request.getRequestDispatcher("auth/login.jsp")
+                    .include(request, response);
         }
     }
 

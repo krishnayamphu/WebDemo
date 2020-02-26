@@ -7,6 +7,9 @@
 <body>
 
 <h2>Manage Users</h2>
+<hr>
+<a href="http://localhost:8080/webdemo/dashboard">Dashboard</a> |
+<a href="http://localhost:8080/webdemo/upload">Upload</a> |
 <a href="user/create">Create User</a>
 <hr>
 <table border="1px">

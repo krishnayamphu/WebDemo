@@ -11,7 +11,9 @@
     <br/>
     <input type="submit" value="Upload">
 </form>
-
+<hr>
+<a href="http://localhost:8080/webdemo/dashboard">Dashboard</a> |
+<a href="http://localhost:8080/webdemo/users">Users</a>
 <hr>
 
 <h2>Manage Media Files</h2>
